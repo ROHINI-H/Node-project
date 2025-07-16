@@ -1,9 +1,9 @@
 {
   "name": "node-project",
-  "type": "module",
   "version": "1.0.0",
   "main": "first.js",
   "scripts": {
+    "start": "nodemon script.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,6 +11,10 @@
   "description": "",
   "dependencies": {
     "body-parser": "^2.2.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
