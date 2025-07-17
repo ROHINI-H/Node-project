@@ -1,5 +1,6 @@
 {
   "name": "node-project",
+  "type": "module",
   "version": "1.0.0",
   "main": "first.js",
   "scripts": {
