@@ -1,5 +1,6 @@
 import express from "express";
-// import bodyParser from "body-parser";
+import bodyParser from "body-parser";
+import jwt from "jsonwebtoken";
 
 // app.use(bodyParser.json());
 
@@ -61,7 +62,7 @@ const books = [{
 }];
 
 // Fetching books data
-app.get("/books", (req, res) => {
+app.get("/books",aunthenticateUser, (req, res) => {
     res.send(books);
 });
 
@@ -125,3 +126,24 @@ app.delete("/book/:id", (req, res) => {
 
     res.send(filteredBooks);
 });
+
+app.post("/login", (req,res) => {
+    // we are creating jwt token with username
+    const user = req.body.username;
+    const accessToken = jwt.sign({user: user}, "secretKey", {expiresIn: "1m"});
+
+    res.send({token: accessToken});
+});
+
+function aunthenticateUser(req,res,next) {
+    const authHeader = req.headers['authorization'];
+    // const token = authHeader && authHeader.split(" ")[1];
+
+    jwt.verify(authHeader, "secretKey", (err, user) => {
+        if(err) {
+            return res.status(403).json({message: "Invalid JWT Token"});
+        }
+        req.user = user;
+        next();
+    });
+}

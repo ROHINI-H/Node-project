@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "first.js",
   "scripts": {
-    "start": "nodemon script.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,6 +13,7 @@
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.3"
   },
   "devDependencies": {
