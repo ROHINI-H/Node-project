@@ -1,9 +1,19 @@
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-    name: String,
-    age: Number,
-    isAdult: Boolean,
+    name: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number,
+        required: true,
+        immutable: true,
+    },
+    isAdult: {
+        type: Boolean,
+        default: true,
+    },
     hobbies: Array,
 });
 

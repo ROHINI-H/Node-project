@@ -62,3 +62,9 @@ console.log(deletedUser);
 // delete all the users
 await User.deleteMany({name: "Reshma"});
 
+const user4 = await User.create({
+    name: "ABC",
+    age:12
+});
+
+await user4.save();
